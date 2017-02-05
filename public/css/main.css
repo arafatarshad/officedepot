@@ -1,0 +1,137 @@
+/*basic style classes*/
+.padding_x_10{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.padding_y_20{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+body{ 
+	width: 1350px !important; 
+	/*max-width: 1920px;*/
+	min-width: 1350px;
+}
+
+/*---------------------------index page-------------------------*/
+.index_header{
+	font-size: 11px;
+	line-height: 2em; 
+}
+
+
+.navigation{
+	border-top: 1px solid #eeeeee;
+	border-bottom: 1px solid #eeeeee;
+	height: 48px;
+	z-index: 1000;
+	position: relative;
+	vertical-align: baseline;
+	line-height: 16px;
+	color: #504a43;
+}
+.index_nav{
+	float: left;
+	
+	margin-bottom: 1em;
+
+	line-height: 1.0;
+	list-style: none;
+	color: #504A40;
+	vertical-align: baseline;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 40px;
+	margin: 0;
+	padding:0;
+
+}
+
+.index_nav>li{
+	display: list-item;
+	text-align: -webkit-match-parent;
+	float: left;
+	position: relative;
+	vertical-align: baseline;
+	line-height: 1.0;
+	color: #504a43;
+}
+.index_nav>li>a{
+	padding: 0px 21px 0 22px;
+	font: 17px arial,sans-serif;
+	font-weight: 300;
+	line-height: 46px;
+	text-align: center;
+	color: #504a43;
+	border-left: 1px solid #eeeeee;
+	border-top: 1px solid #eeeeee;
+	text-decoration: none;	
+	display: block;
+	position: relative;
+	z-index: 100;
+}
+
+
+.nav_border_right{
+	border-right: 1px solid #eeeeee; 
+}
+.nav_border_left{
+	border-left: 1px solid #eeeeee; 
+}
+.border_top{
+	border-top: 1px solid #eeeeee;
+}
+.border_bottom{
+	border-bottom: 1px solid #eeeeee;
+}
+
+
+
+.dropdown-menu.multi-column {
+	width: 400px;
+}
+
+.dropdown-menu.multi-column .dropdown-menu {
+	display: block !important;
+	position: static !important;
+	margin: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
+} 
+
+.carousel-indicators li{ 
+	background: #eeeeee;
+}
+.carousel-indicators .active{ 
+	background: red;
+}
+@media screen and (min-width: 768px){
+	.carousel-indicators {
+		bottom: -40px ;
+	}
+}
+@media screen and (max-width: 768px){
+	.carousel-indicators {
+		bottom: -40px ;
+	}	
+}
+
+.intro-row{
+	width: 100%;margin: 0px;padding-top: 10px;padding-bottom: 10px;background: #f9fcfb
+}
+.thumb-description{
+	width: 25%;
+	float: left;
+	padding-left: 20px
+}
+.hr_name{
+	width: 20%;
+}
+.thumb-description img{
+	margin-bottom: 10px
+}
+.index_footer{
+	background: #f9fcfb
+}
