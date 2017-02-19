@@ -43,14 +43,14 @@
 	-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
 	box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);"> 
 	<ul class="index_nav nav navbar-nav" id="menu">
-		<li class="dropdown">
+<!-- 		<li class="dropdown">
 			<a href="#"  class="nav_link">Office Supplies</a>  
         <div class="dropdown_5columns">
-<!--             <div class="col_5">
+            <div class="col_5">
             <p>This is a 5 Columns content</p>
-            </div> -->
+            </div>
             <div class="col_1">
-            	<!-- <p>This is a 1 Column content</p> -->
+            	<p>This is a 1 Column content</p>
             	<ul>
                     <li><a href="#" class="sub_category_item">ThemeForest</a></li>
                     	<ul class="items">
@@ -74,7 +74,7 @@
             <div class="col_1">
             <p>This is a 1 Column content</p>
             </div>
-<!--             <div class="col_4">
+            <div class="col_4">
             <p>This is a 4 Columns content</p>
             </div>
             <div class="col_1">
@@ -85,10 +85,10 @@
             </div>
             <div class="col_2">
             <p>This is a 2 Columns content</p>
-            </div> -->
+            </div>
         </div>
 		</li>
-<!-- 		<li class="dropdown">
+ --><!-- 		<li class="dropdown">
 			<a href="#" data-toggle="dropdown" class="nav_link">Office Supplies</a>  
 			<div class="dropdown-menu multi-column">
 				<div class="container-fluid">
@@ -123,7 +123,43 @@
 		</li>
 		<li class="nav_border_right nav_link">
 			<a href="#">Office Supplies</a> 
-		</li>	 -->		
+		</li>	 -->
+		@if(isset($categories) && !empty($categories))
+		@foreach($categories as $category)
+		<li class="dropdown">
+			<a href="#"  class="nav_link">{{$category->name}}</a>
+ 			  
+			@if($category->id==8)
+				<div class="dropdown_2columns">
+			@elseif($category->id==7)
+				<div class="dropdown_4columns">
+			@else
+			<div class="dropdown_5columns">
+			@endif
+				@if(isset($sub_categories) && !empty($sub_categories))
+				@foreach($sub_categories as $sub_category)
+				@if($sub_category->category_id==$category->id)
+				<div class="col_1"> 
+					<ul>
+						<li><a href="#" class="sub_category_item">{{$sub_category->name}}</a></li>
+						@if(isset($items) && !empty($items))
+						<ul class="items">
+						@foreach($items as $item)
+						@if($item->sub_category_id==$sub_category->id)
+							<li>{{$item->name}}</li>  	
+						@endif
+						@endforeach
+						</ul>
+						@endif
+					</ul>   
+				</div> 
+				@endif
+				@endforeach
+				@endif
+			</div>
+		</li>
+		@endforeach
+		@endif
 	</ul>
 </div>
 

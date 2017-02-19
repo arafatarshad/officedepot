@@ -59,7 +59,8 @@ body{
 	color: #504a43;
 }
 .index_nav>li>a{
-	padding: 0px 21px 0 22px;
+	/*padding: 0px 21px 0 22px;*/
+	padding: 0px 16px 0 17px;
 	font: 17px arial,sans-serif;
 	font-weight: 300;
 	line-height: 46px;
