@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+	<!DOCTYPE html>
+	<html lang="en">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-	<title>Agri Biznes</title>
+		<title>Agri Biznes</title>
 
-	<!-- Bootstrap Core CSS -->
-	<link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="{{ asset ('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">  
-	<link href="{{ asset ('css/main.css') }}" rel="stylesheet"> 
+		<!-- Bootstrap Core CSS -->
+		<link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset ('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">  
+		<link href="{{ asset ('css/main.css') }}" rel="stylesheet"> 
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
 </head>
 
@@ -44,6 +44,51 @@
 	box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);"> 
 	<ul class="index_nav nav navbar-nav" id="menu">
 		<li class="dropdown">
+			<a href="#"  class="nav_link">Office Supplies</a>  
+        <div class="dropdown_5columns">
+<!--             <div class="col_5">
+            <p>This is a 5 Columns content</p>
+            </div> -->
+            <div class="col_1">
+            	<!-- <p>This is a 1 Column content</p> -->
+            	<ul>
+                    <li><a href="#" class="sub_category_item">ThemeForest</a></li>
+                    	<ul class="items">
+                    		<li>sdasd</li> 
+                    	</ul>
+                    <li><a href="#">GraphicRiver</a></li>
+                    <li><a href="#">ActiveDen</a></li>
+                    <li><a href="#">VideoHive</a></li>
+                    <li><a href="#">3DOcean</a></li>
+                </ul>   
+            </div>
+            <div class="col_1">
+            <p>This is a 1 Column content</p>
+            </div>
+            <div class="col_1">
+            <p>This is a 1 Column content</p>
+            </div>
+            <div class="col_1">
+            <p>This is a 1 Column content</p>
+            </div>
+            <div class="col_1">
+            <p>This is a 1 Column content</p>
+            </div>
+<!--             <div class="col_4">
+            <p>This is a 4 Columns content</p>
+            </div>
+            <div class="col_1">
+            <p>This is a 1 Column content</p>
+            </div>
+            <div class="col_3">
+            <p>This is a 3 Columns content</p>
+            </div>
+            <div class="col_2">
+            <p>This is a 2 Columns content</p>
+            </div> -->
+        </div>
+		</li>
+<!-- 		<li class="dropdown">
 			<a href="#" data-toggle="dropdown" class="nav_link">Office Supplies</a>  
 			<div class="dropdown-menu multi-column">
 				<div class="container-fluid">
@@ -65,10 +110,7 @@
 			</div>
 		</li>
 		<li class="">
-			<a href="#" class="nav_link">Office Supplies</a> 
-		</li>
-		<li class="">
-			<a href="#" class="nav_link">Office Supplies</a> 
+			<a href="#" class="nav_link">Office Supplies</a>  
 		</li>
 		<li class="">
 			<a href="#" class="nav_link">Office Supplies</a> 
@@ -81,7 +123,7 @@
 		</li>
 		<li class="nav_border_right nav_link">
 			<a href="#">Office Supplies</a> 
-		</li>			
+		</li>	 -->		
 	</ul>
 </div>
 
@@ -97,11 +139,11 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox" >
 			<div class="item active" style="width: inherit;">
-				<img src="{{asset('img/HOMEPAGE-1.png')}}" alt="Chania" style="width: inherit;">
+				<img src="{{asset('img/HOMEPAGE-2.png')}}" alt="Chania" style="width: inherit;">
 			</div>
 
 			<div class="item" style="width: inherit;">
-				<img src="{{asset('img/HOMEPAGE-1.png')}}" alt="Chania" style="width: inherit;">
+				<img src="{{asset('img/HOMEPAGE-3.png')}}" alt="Chania" style="width: inherit;">
 			</div>
 
 			<div class="item" style="width: inherit;">
@@ -230,9 +272,9 @@
 </div>
 
 <div class="row index_footer text-center" style="margin-bottom: 20px;-webkit-box-shadow: 3px -2px 30px 0px rgba(50, 50, 50, 0.23);
-	-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
-	box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);">
-	<h6>Copyright &copy 2017, All rights Reserved to Office Depot</h6>
+-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
+box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);">
+<h6>Copyright &copy 2017, All rights Reserved to Office Depot</h6>
 </div>
 <!-- jQuery -->
 <script src="{{ asset ('js/jquery.js') }}"></script>
