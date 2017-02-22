@@ -28,302 +28,193 @@
 	<!-- header  -->
 	<div class="row padding_x_10 padding_y_20 index_header" >  
 		<img src="{{asset('img/logo.png')}}" alt="" class="pull-left">
-		<div class="input-group" style="width:200px;float: right;">
-			<input type="text" class="form-control input-sm" placeholder="Buscar" />
+		<form action="{{URL::to('/')}}/search" method="POST">
+		<div class="input-group" style="width:200px;float: right;"> 
+			<input type="text" name="term" class="form-control input-sm" placeholder="Search" required="" />
+					{{ csrf_field() }}
+
 			<span class="input-group-btn">
-				<button class="btn btn-info btn-sm" type="button">
+				<button class="btn btn-info btn-sm" type="submit">
 					<i class="glyphicon glyphicon-search"></i>
 				</button>
-			</span>
+			</span> 
 		</div>
-		<span style="float: right;padding-right: 10px;padding-top: 5px">Contact | </span>    
+		</form>
+		<span style="float: right;padding-right: 10px;padding-top: 5px"><a href="{{URL::to('/')}}/contact">Contact </a>| </span>    
 	</div>
 	<!-- navigation  -->
 	<div class="row padding_x_10 border_top border_bottom" style="margin-bottom: 20px;-webkit-box-shadow: 3px -2px 30px 0px rgba(50, 50, 50, 0.23);
 	-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
 	box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);"> 
 	<ul class="index_nav nav navbar-nav" id="menu">
-<!-- 		<li class="dropdown">
-			<a href="#"  class="nav_link">Office Supplies</a>  
-        <div class="dropdown_5columns">
-            <div class="col_5">
-            <p>This is a 5 Columns content</p>
-            </div>
-            <div class="col_1">
-            	<p>This is a 1 Column content</p>
-            	<ul>
-                    <li><a href="#" class="sub_category_item">ThemeForest</a></li>
-                    	<ul class="items">
-                    		<li>sdasd</li> 
-                    	</ul>
-                    <li><a href="#">GraphicRiver</a></li>
-                    <li><a href="#">ActiveDen</a></li>
-                    <li><a href="#">VideoHive</a></li>
-                    <li><a href="#">3DOcean</a></li>
-                </ul>   
-            </div>
-            <div class="col_1">
-            <p>This is a 1 Column content</p>
-            </div>
-            <div class="col_1">
-            <p>This is a 1 Column content</p>
-            </div>
-            <div class="col_1">
-            <p>This is a 1 Column content</p>
-            </div>
-            <div class="col_1">
-            <p>This is a 1 Column content</p>
-            </div>
-            <div class="col_4">
-            <p>This is a 4 Columns content</p>
-            </div>
-            <div class="col_1">
-            <p>This is a 1 Column content</p>
-            </div>
-            <div class="col_3">
-            <p>This is a 3 Columns content</p>
-            </div>
-            <div class="col_2">
-            <p>This is a 2 Columns content</p>
-            </div>
-        </div>
-		</li>
- --><!-- 		<li class="dropdown">
-			<a href="#" data-toggle="dropdown" class="nav_link">Office Supplies</a>  
-			<div class="dropdown-menu multi-column">
-				<div class="container-fluid">
-					<div class="row-fluid">
-						<div class="span6">
-							<ul class="dropdown-menu">
-								<li><a href="#">Col 1 - Opt 1</a></li>
-								<li><a href="#">Col 1 - Opt 2</a></li>
-							</ul>
-						</div>
-						<div class="span6">
-							<ul class="dropdown-menu">
-								<li><a href="#">Col 2 - Opt 1</a></li>
-								<li><a href="#">Col 2 - Opt 2</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</li>
-		<li class="">
-			<a href="#" class="nav_link">Office Supplies</a>  
-		</li>
-		<li class="">
-			<a href="#" class="nav_link">Office Supplies</a> 
-		</li>
-		<li class="">
-			<a href="#" class="nav_link">Office Supplies</a> 
-		</li>
-		<li class="">
-			<a href="#" class="nav_link">Office Supplies</a> 
-		</li>
-		<li class="nav_border_right nav_link">
-			<a href="#">Office Supplies</a> 
-		</li>	 -->
 		@if(isset($categories) && !empty($categories))
 		@foreach($categories as $category)
 		<li class="dropdown">
 			<a href="#"  class="nav_link">{{$category->name}}</a>
- 			  
+
 			@if($category->id==8)
-				<div class="dropdown_2columns">
-			@elseif($category->id==7)
+			<div class="dropdown_2columns">
+				@elseif($category->id==7)
 				<div class="dropdown_4columns">
-			@else
-			<div class="dropdown_5columns">
-			@endif
-				@if(isset($sub_categories) && !empty($sub_categories))
-				@foreach($sub_categories as $sub_category)
-				@if($sub_category->category_id==$category->id)
-				<div class="col_1"> 
-					<ul>
-						<li><a href="#" class="sub_category_item">{{$sub_category->name}}</a></li>
-						@if(isset($items) && !empty($items))
-						<ul class="items">
-						@foreach($items as $item)
-						@if($item->sub_category_id==$sub_category->id)
-							<li>{{$item->name}}</li>  	
+					@else
+					<div class="dropdown_5columns">
+						@endif
+						@if(isset($sub_categories) && !empty($sub_categories))
+						@foreach($sub_categories as $sub_category)
+						@if($sub_category->category_id==$category->id)
+						<div class="col_1"> 
+							<ul>
+								<li><a href="{{URL::to('/')}}/items/{{$sub_category->name}}" class="sub_category_item">{{$sub_category->name}}</a></li>
+								@if(isset($items) && !empty($items))
+								<ul class="items">
+									@foreach($items as $item)
+									@if($item->sub_category_id==$sub_category->id)
+									<li>{{$item->name}}</li>  	
+									@endif
+									@endforeach
+								</ul>
+								@endif
+							</ul>   
+						</div> 
 						@endif
 						@endforeach
-						</ul>
 						@endif
-					</ul>   
-				</div> 
-				@endif
+					</div>
+				</li>
 				@endforeach
 				@endif
+			</ul>
+		</div>
+
+		<!-- carousel  -->
+		<div class="row padding_x_10" >
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 100%;padding-right: 5px;position: relative;"> 
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li> 
+				</ol>
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox" >
+					<div class="item active" style="width: inherit;">
+						<img src="{{asset('img/HOMEPAGE-2.png')}}" alt="Chania" style="width: inherit;">
+					</div>
+
+					<div class="item" style="width: inherit;">
+						<img src="{{asset('img/HOMEPAGE-3.png')}}" alt="Chania" style="width: inherit;">
+					</div>
+
+					<div class="item" style="width: inherit;">
+						<img src="{{asset('img/HOMEPAGE-1.png')}}" alt="Flower" style="width: inherit;">
+					</div> 
+				</div> 
 			</div>
-		</li>
-		@endforeach
-		@endif
-	</ul>
-</div>
+		</div>
+		<div class="row padding_x_10">
+			<hr>
+		</div>
+		<div class="row padding_x_10" style="margin-bottom: 20px">
+			<h1 style="font-size: 32px;">Supporting All Your <span style="color: red"> Work Place Needs . . <span></h1>
+		</div>
+		<div class="row padding_x_10" style="margin-bottom: 80px">
+			<div class="row border_top border_bottom intro-row">
+				@for($i=0;$i<4;$i++)
+				@if($i==3)
+				<div class="thumb-description">
+					@else
+					<div class="thumb-description nav_border_right">
+						@endif
+						<h3>{{$categories[$i]->name}}</h3>
+						<div class="hr_name"><hr></div>
+						<img src="http://placehold.it/350x220" class="img-responsive">
+							<!-- <img src="{{asset('img/homethumb.png')}}" alt=""> -->
+						<br>
+						<a href="{{URL::to('/')}}/read_more/{{$categories[$i]->name}}">Read More > </a>
+					</div>
 
-<!-- carousel  -->
-<div class="row padding_x_10" >
-	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 100%;padding-right: 5px;position: relative;"> 
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li> 
-		</ol>
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox" >
-			<div class="item active" style="width: inherit;">
-				<img src="{{asset('img/HOMEPAGE-2.png')}}" alt="Chania" style="width: inherit;">
+					@endfor
+				</div>
+				<div class="row border_top border_bottom intro-row">
+					@for($i=4;$i<8;$i++)
+					@if($i==7)
+					<div class="thumb-description">
+						@else
+						<div class="thumb-description nav_border_right">
+							@endif	<h3>{{$categories[$i]->name}}</h3>
+							<div class="hr_name"><hr></div>
+							<img src="http://placehold.it/350x220" class="img-responsive">
+							<!-- <img src="{{asset('img/homethumb.png')}}" alt=""> -->
+							<br>
+							<a href="{{URL::to('/')}}/read_more/{{$categories[$i]->name}}">Read More > </a>
+						</div>
+
+						@endfor 
+					</div>	
+				</div>
+
+
+
+				<div class="row padding_x_10" style="margin-bottom: 40px">
+					<table style="width:100%">
+						<tr>
+							<th style="width: 20%"> Site Information <br>	
+								<div class="hr_name"><hr></div>
+							</th>	
+							<th style="width: 20%"> Company Information <br>	
+								<div class="hr_name"><hr></div>
+							</th>
+							<th style="width: 20%"> Customer Service <br>	
+								<div class="hr_name"><hr></div>
+							</th>
+							<th style="width: 20%"> Additional Service<br>	
+								<div class="hr_name"><hr></div>
+							</th>
+							<th style="width: 20%"> Information Guide <br>	
+								<div class="hr_name"><hr></div>
+							</th>
+						</tr>
+						<tr>
+							<td>Site Map</td>
+							<td>Who are we</td>
+							<td>Customer Service</td>
+							<td>Necter Business</td>
+							<td>Envelope Type and Size guide</td>
+						</tr> 
+						<tr>
+							<td>Site Map</td>
+							<td>Who are we</td>
+							<td>Customer Service</td>
+							<td>Necter Business</td>
+							<td>Envelope Type and Size guide</td>
+						</tr> 
+						<tr>
+							<td>Site Map</td>
+							<td>Who are we</td>
+							<td>Customer Service</td>
+							<td>Necter Business</td>
+							<td>Envelope Type and Size guide</td>
+						</tr> 
+					</table>
+				</div>
+
+				<div class="row index_footer text-center" style="margin-bottom: 20px;-webkit-box-shadow: 3px -2px 30px 0px rgba(50, 50, 50, 0.23);
+				-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
+				box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);">
+				<h6>Copyright &copy 2017, All rights Reserved to Office Depot</h6>
 			</div>
+			<!-- jQuery -->
+			<script src="{{ asset ('js/jquery.js') }}"></script>
+			<script src="{{ asset ('js/bootstrap.min.js') }}"></script>
+			<!-- <script src="{{ asset ('/assets/js/cross-domain-request.js') }}"></script> -->
+			<!-- Script to Activate the Carousel -->
+			<script>
+				$(document).ready(function(){ 
+					$('.nav_link').on('click',function(){ 
+						$('.nav_panel').css('display','block');
+					});
+				});
+			</script>
+		</body>
 
-			<div class="item" style="width: inherit;">
-				<img src="{{asset('img/HOMEPAGE-3.png')}}" alt="Chania" style="width: inherit;">
-			</div>
-
-			<div class="item" style="width: inherit;">
-				<img src="{{asset('img/HOMEPAGE-1.png')}}" alt="Flower" style="width: inherit;">
-			</div> 
-		</div> 
-	</div>
-</div>
-<div class="row padding_x_10">
-	<hr>
-</div>
-<div class="row padding_x_10" style="margin-bottom: 20px">
-	<h1 style="font-size: 32px;">Supporting All Your <span style="color: red"> Work Place Needs . . <span></h1>
-</div>
-
-
-
-
-
-<div class="row padding_x_10" style="margin-bottom: 80px">
-	<div class="row border_top border_bottom intro-row">
-		<div class="thumb-description nav_border_right">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div>
-		<div class="thumb-description nav_border_right">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div>
-		<div class="thumb-description nav_border_right">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div>
-		<div class="thumb-description">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div> 
-	</div>
-	<div class="row border_top border_bottom intro-row">
-		<div class="thumb-description nav_border_right">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div>
-		<div class="thumb-description nav_border_right">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div>
-		<div class="thumb-description nav_border_right">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div>
-		<div class="thumb-description">
-			<h3>Office Supplies</h3>
-			<div class="hr_name"><hr></div>
-			<img src="{{asset('img/homethumb.png')}}" alt="">
-			<br>
-			<a href="">Read More > </a>
-		</div> 
-	</div>	
-</div>
-
-
-
-<div class="row padding_x_10" style="margin-bottom: 40px">
-	<table style="width:100%">
-		<tr>
-			<th style="width: 20%"> Site Information <br>	
-				<div class="hr_name"><hr></div>
-			</th>	
-			<th style="width: 20%"> Company Information <br>	
-				<div class="hr_name"><hr></div>
-			</th>
-			<th style="width: 20%"> Customer Service <br>	
-				<div class="hr_name"><hr></div>
-			</th>
-			<th style="width: 20%"> Additional Service<br>	
-				<div class="hr_name"><hr></div>
-			</th>
-			<th style="width: 20%"> Information Guide <br>	
-				<div class="hr_name"><hr></div>
-			</th>
-		</tr>
-		<tr>
-			<td>Site Map</td>
-			<td>Who are we</td>
-			<td>Customer Service</td>
-			<td>Necter Business</td>
-			<td>Envelope Type and Size guide</td>
-		</tr> 
-		<tr>
-			<td>Site Map</td>
-			<td>Who are we</td>
-			<td>Customer Service</td>
-			<td>Necter Business</td>
-			<td>Envelope Type and Size guide</td>
-		</tr> 
-		<tr>
-			<td>Site Map</td>
-			<td>Who are we</td>
-			<td>Customer Service</td>
-			<td>Necter Business</td>
-			<td>Envelope Type and Size guide</td>
-		</tr> 
-	</table>
-</div>
-
-<div class="row index_footer text-center" style="margin-bottom: 20px;-webkit-box-shadow: 3px -2px 30px 0px rgba(50, 50, 50, 0.23);
--moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
-box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);">
-<h6>Copyright &copy 2017, All rights Reserved to Office Depot</h6>
-</div>
-<!-- jQuery -->
-<script src="{{ asset ('js/jquery.js') }}"></script>
-<script src="{{ asset ('js/bootstrap.min.js') }}"></script>
-<!-- <script src="{{ asset ('/assets/js/cross-domain-request.js') }}"></script> -->
-<!-- Script to Activate the Carousel -->
-<script>
-	$(document).ready(function(){ 
-		$('.nav_link').on('click',function(){ 
-			$('.nav_panel').css('display','block');
-		});
-	});
-</script>
-</body>
-
-</html>
+		</html>

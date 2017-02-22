@@ -16,3 +16,7 @@
 // });
 
 Route::get("/","MainPageController@index");
+Route::get("/read_more/{name}","MainPageController@ReadMore");
+Route::get("/items/{name}","MainPageController@ItemList");
+Route::get("/contact","MainPageController@Contact");
+Route::post("/search","MainPageController@Search");

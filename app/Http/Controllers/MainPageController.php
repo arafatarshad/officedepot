@@ -88,5 +88,42 @@ class MainPageController extends Controller
     public function destroy($id)
     {
         //
+
+    }
+
+
+    public function ReadMore($name){
+        dd($name);
+    }
+    public function ItemList($name){
+        $id=DB::select("SELECT id from sub_category where name = '$name'")[0]->id;         
+        $data=DB::select("SELECT * from item where sub_category_id=$id AND valid=1");
+        // dd($items);
+
+        $categories=DB::select("SELECT id,name,image,description from category");
+        $sub_categories=DB::select("SELECT a.id,a.name,a.description,a.image,a.category_id from sub_category a JOIN category b ON a.category_id=b.id");
+        $items=DB::select("SELECT a.id,a.name,a.description,a.image,a.sub_category_id from item a JOIN sub_category b ON a.sub_category_id=b.id WHERE a.valid=1");
+
+        return view("itemlist",['categories'=>$categories,'sub_categories'=>$sub_categories,'items'=>$items,"data"=>$data]);
+    }
+
+    public function Contact(){
+        $categories=DB::select("SELECT id,name,image,description from category");
+        $sub_categories=DB::select("SELECT a.id,a.name,a.description,a.image,a.category_id from sub_category a JOIN category b ON a.category_id=b.id");
+        $items=DB::select("SELECT a.id,a.name,a.description,a.image,a.sub_category_id from item a JOIN sub_category b ON a.sub_category_id=b.id WHERE a.valid=1");
+
+        return view("contact",['categories'=>$categories,'sub_categories'=>$sub_categories,'items'=>$items]); 
+    }
+    public function Search(Request $request){
+        // dd($request->all());
+        $term=$request->term;
+         $data=DB::select("SELECT * from item where name LIKE '%$term%' AND valid=1");
+        // dd($items);
+
+        $categories=DB::select("SELECT id,name,image,description from category");
+        $sub_categories=DB::select("SELECT a.id,a.name,a.description,a.image,a.category_id from sub_category a JOIN category b ON a.category_id=b.id");
+        $items=DB::select("SELECT a.id,a.name,a.description,a.image,a.sub_category_id from item a JOIN sub_category b ON a.sub_category_id=b.id WHERE a.valid=1");
+
+        return view("searchlist",['categories'=>$categories,'sub_categories'=>$sub_categories,'items'=>$items,"data"=>$data]);
     }
 }
