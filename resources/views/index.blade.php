@@ -8,7 +8,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>Agri Biznes</title>
+		<title>Ofcdepot</title>
 
 		<!-- Bootstrap Core CSS -->
 		<link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -21,7 +21,12 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
+	<style type="text/css">
+		.carousel-inner img{
+			height:350px !important;
+			border-bottom: 15px solid #FF0000;
+		}
+	</style>
 </head>
 
 <body >
@@ -29,16 +34,16 @@
 	<div class="row padding_x_10 padding_y_20 index_header" >  
 		<img src="{{asset('img/logo.png')}}" alt="" class="pull-left">
 		<form action="{{URL::to('/')}}/search" method="POST">
-		<div class="input-group" style="width:200px;float: right;"> 
-			<input type="text" name="term" class="form-control input-sm" placeholder="Search" required="" />
-					{{ csrf_field() }}
+			<div class="input-group" style="width:200px;float: right;"> 
+				<input type="text" name="term" class="form-control input-sm" placeholder="Search" required="" />
+				{{ csrf_field() }}
 
-			<span class="input-group-btn">
-				<button class="btn btn-info btn-sm" type="submit">
-					<i class="glyphicon glyphicon-search"></i>
-				</button>
-			</span> 
-		</div>
+				<span class="input-group-btn">
+					<button class="btn btn-info btn-sm" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</span> 
+			</div>
 		</form>
 		<span style="float: right;padding-right: 10px;padding-top: 5px"><a href="{{URL::to('/')}}/contact">Contact </a>| </span>    
 	</div>
@@ -98,15 +103,15 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox" >
 					<div class="item active" style="width: inherit;">
-						<img src="{{asset('img/HOMEPAGE-2.png')}}" alt="Chania" style="width: inherit;">
+						<img src="{{asset('img/HOMEPAGE-2.jpg')}}" style="width: inherit;">
 					</div>
 
 					<div class="item" style="width: inherit;">
-						<img src="{{asset('img/HOMEPAGE-3.png')}}" alt="Chania" style="width: inherit;">
+						<img src="{{asset('img/HOMEPAGE-3.jpg')}}" style="width: inherit;">
 					</div>
 
 					<div class="item" style="width: inherit;">
-						<img src="{{asset('img/HOMEPAGE-1.png')}}" alt="Flower" style="width: inherit;">
+						<img src="{{asset('img/HOMEPAGE-1.jpg')}}"  style="width: inherit;">
 					</div> 
 				</div> 
 			</div>
@@ -126,9 +131,8 @@
 					<div class="thumb-description nav_border_right">
 						@endif
 						<h3>{{$categories[$i]->name}}</h3>
-						<div class="hr_name"><hr></div>
-						<img src="http://placehold.it/350x220" class="img-responsive">
-							<!-- <img src="{{asset('img/homethumb.png')}}" alt=""> -->
+						<div class="hr_name"><hr></div> 
+						<img src="{{asset('img/'.$categories[$i]->image)}}" class="img-responsive"> 
 						<br>
 						<a href="{{URL::to('/')}}/read_more/{{$categories[$i]->name}}">Read More > </a>
 					</div>
@@ -142,9 +146,8 @@
 						@else
 						<div class="thumb-description nav_border_right">
 							@endif	<h3>{{$categories[$i]->name}}</h3>
-							<div class="hr_name"><hr></div>
-							<img src="http://placehold.it/350x220" class="img-responsive">
-							<!-- <img src="{{asset('img/homethumb.png')}}" alt=""> -->
+							<div class="hr_name"><hr></div> 
+							<img src="{{asset('img/'.$categories[$i]->image)}}" class="img-responsive"> 
 							<br>
 							<a href="{{URL::to('/')}}/read_more/{{$categories[$i]->name}}">Read More > </a>
 						</div>
@@ -155,66 +158,101 @@
 
 
 
-				<div class="row padding_x_10" style="margin-bottom: 40px">
-					<table style="width:100%">
+				<div class="row padding_x_10" style="margin-bottom: 20px;padding: 0 20%">
+					<table style="width:100%;"  >
 						<tr>
-							<th style="width: 20%"> Site Information <br>	
+							<th style="width: 20%">
+								Company Information  
 								<div class="hr_name"><hr></div>
 							</th>	
-							<th style="width: 20%"> Company Information <br>	
+							<th style="width: 20%">  Customer Service
 								<div class="hr_name"><hr></div>
 							</th>
-							<th style="width: 20%"> Customer Service <br>	
+							<th style="width: 20%"> 
+								Additional Service
 								<div class="hr_name"><hr></div>
-							</th>
-							<th style="width: 20%"> Additional Service<br>	
-								<div class="hr_name"><hr></div>
-							</th>
-							<th style="width: 20%"> Information Guide <br>	
-								<div class="hr_name"><hr></div>
-							</th>
+							</th> 
 						</tr>
 						<tr>
-							<td>Site Map</td>
-							<td>Who are we</td>
-							<td>Customer Service</td>
-							<td>Necter Business</td>
-							<td>Envelope Type and Size guide</td>
+							<td>
+								<a href="{{URL::to('/')}}/site_map/who_we_are">
+									Who we are?
+								</a>
+							</td>
+							<td>
+								<a href="{{URL::to('/')}}/site_map/customer_service">
+									Customer Service
+								</a>
+							</td>
+							<td> 
+								<a href="{{URL::to('/')}}/site_map/security_service">
+									Security Service
+								</a>
+							</td>
 						</tr> 
 						<tr>
-							<td>Site Map</td>
-							<td>Who are we</td>
-							<td>Customer Service</td>
-							<td>Necter Business</td>
-							<td>Envelope Type and Size guide</td>
-						</tr> 
-						<tr>
-							<td>Site Map</td>
-							<td>Who are we</td>
-							<td>Customer Service</td>
-							<td>Necter Business</td>
-							<td>Envelope Type and Size guide</td>
-						</tr> 
-					</table>
+							<td>
+								<a href="{{URL::to('/')}}/site_map/who_buy_from_us">
+									Who Buy From Us
+								</a></td>
+								<td>		
+									<a href="{{URL::to('/')}}/site_map/our_clients">
+										Our Clients
+									</a>
+								</td>
+								<td> 
+									<a href="{{URL::to('/')}}/site_map/catering_service">
+										Catering and Office Meal Services
+									</a>
+								</td>
+							</tr> 
+							<tr>
+								<td><a href="{{URL::to('/')}}/contact">
+									Company Details
+								</a></td>
+								<td>
+									<a href="{{URL::to('/')}}/site_map/delivery_information">
+										Delivery Information
+									</a>
+								</td>
+								<td>
+									<a href="{{URL::to('/')}}/site_map/cleaning_service">
+										Housekeeping and Cleaning Services
+									</a>
+								</td>
+							</tr> 
+							<tr>
+								<td></td>
+								<td>
+									<a href="{{URL::to('/')}}/site_map/return_policy">Return Policy
+									</a>
+								</td>
+								<td> 
+								<a href="{{URL::to('/')}}/site_map/courier_service">
+										Courier Services
+									</a>
+								</td>
+							</tr> 							
+						</table>
+					</div>
+
+					<div class="row index_footer text-center" style="margin-bottom: 20px;-webkit-box-shadow: 3px -2px 30px 0px rgba(50, 50, 50, 0.23);
+					-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
+					box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);">
+					<h6>Copyright &copy 2017, All rights Reserved to Office Depot</h6>
 				</div>
-
-				<div class="row index_footer text-center" style="margin-bottom: 20px;-webkit-box-shadow: 3px -2px 30px 0px rgba(50, 50, 50, 0.23);
-				-moz-box-shadow:    3px -2px 30px 0px rgba(50, 50, 50, 0.23);
-				box-shadow:         3px -2px 30px 0px rgba(50, 50, 50, 0.23);">
-				<h6>Copyright &copy 2017, All rights Reserved to Office Depot</h6>
-			</div>
-			<!-- jQuery -->
-			<script src="{{ asset ('js/jquery.js') }}"></script>
-			<script src="{{ asset ('js/bootstrap.min.js') }}"></script>
-			<!-- <script src="{{ asset ('/assets/js/cross-domain-request.js') }}"></script> -->
-			<!-- Script to Activate the Carousel -->
-			<script>
-				$(document).ready(function(){ 
-					$('.nav_link').on('click',function(){ 
-						$('.nav_panel').css('display','block');
+				<!-- jQuery -->
+				<script src="{{ asset ('js/jquery.js') }}"></script>
+				<script src="{{ asset ('js/bootstrap.min.js') }}"></script>
+				<!-- <script src="{{ asset ('/assets/js/cross-domain-request.js') }}"></script> -->
+				<!-- Script to Activate the Carousel -->
+				<script>
+					$(document).ready(function(){ 
+						$('.nav_link').on('click',function(){ 
+							$('.nav_panel').css('display','block');
+						});
 					});
-				});
-			</script>
-		</body>
+				</script>
+			</body>
 
-		</html>
+			</html>

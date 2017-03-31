@@ -20,3 +20,6 @@ Route::get("/read_more/{name}","MainPageController@ReadMore");
 Route::get("/items/{name}","MainPageController@ItemList");
 Route::get("/contact","MainPageController@Contact");
 Route::post("/search","MainPageController@Search");
+Route::get("/site_map/{name}","MainPageController@siteMap");
+Route::get("/edit_item","MainPageController@editImage");
+Route::post("/change_item","MainPageController@changeItem");

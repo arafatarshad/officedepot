@@ -8,7 +8,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>Agri Biznes</title>
+		<title>Ofcdepot</title>
 
 		<!-- Bootstrap Core CSS -->
 		<link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet">

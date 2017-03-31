@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 08:04 PM
+-- Generation Time: Feb 24, 2017 at 04:55 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -249,7 +249,7 @@ INSERT INTO `sub_category` (`id`, `name`, `description`, `image`, `category_id`)
 (18, 'Personalising', NULL, NULL, 3),
 (19, 'Office Seals & Stamps ', NULL, NULL, 3),
 (20, 'Photocopiers', NULL, NULL, 4),
-(21, 'PC''s, Laptops & Tablets ', NULL, NULL, 5),
+(21, 'PCs, Laptops & Tablets ', NULL, NULL, 5),
 (22, 'Computer Accessories ', NULL, NULL, 5),
 (23, 'Monitors & Web Cam', NULL, NULL, 5),
 (24, 'Printers', NULL, NULL, 5),
