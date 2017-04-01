@@ -87,9 +87,9 @@
 		</div>
 
 		<div class="row padding_x_10 item_row">
-			<a href="{{URL::to('/')}}">Home</a> / <a href="#">computers</a>
+			<a href="{{URL::to('/')}}">Home</a> / 
 			@if(isset($data) && !empty($data))
-			<h3 style="color: #F69E70">DeskTop Computer   <span class="item-found">39 items found</span></h3>
+			<h3 style="color: #F69E70"><span class="item-found">{{sizeof($data)}} items found</span></h3>
 			@foreach($data as $row)
 			<div class="row single-item-row">
 				<img src="http://placehold.it/300x250" class="item-img" >
