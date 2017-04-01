@@ -160,14 +160,14 @@ class MainPageController extends Controller
             $item->name=$request->name;
         }
 
-        if($request->hasFile('image')) {
-            // dd("sdasd");
-            $file = Input::file('image');
-            $ext=$file->getClientOriginalExtension();
-            $imagename = time() . uniqid() .$ext;
-            $file->move(base_path() . '/public/img',$imagename);
-        }
-        dd($request->all());
-    }
+        if($request->hasFile('image')){
+           $file = $request->file('image'); 
+           $filename = time() . '.' . $file->getClientOriginalExtension(); 
+           $file->move( public_path().'/img',$filename);   
+           $item->image=$filename;
+       }
+       $item->save(); 
+       return back()->with('error','Error message');
+   }
 
 }
